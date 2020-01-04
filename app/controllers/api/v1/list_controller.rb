@@ -1,4 +1,4 @@
-class ListController < ApplicationController
+class API::V1::ListController < ApplicationController
 
 	def new
 		@list = List.new

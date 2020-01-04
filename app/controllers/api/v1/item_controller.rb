@@ -1,4 +1,4 @@
-class ItemController < ApplicationController
+class API::V1::ItemController < ApplicationController
 
 	def create
 		@item = Item.save(item_params)
