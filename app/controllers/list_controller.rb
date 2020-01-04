@@ -7,33 +7,40 @@ class ListController < ApplicationController
 
 	def index
 		@lists = List.all
+		if @lists.blank?
+			render status: 400, json: {Error: "Something went wrong!"}
+		else
+			render status: 200, json: @lists
+		end
 	end
 
 	def create
 		@list = List.save(list_params)
 		if @list.save
-			flash[:notice] = "Your list was successfully created!"
-			redirect_to @list_path(@list.id)
+			render status: 200, json: @list
 		else
-			flash.now.alert = "Something went wrong!  Please try again!"
-			render :new
+			render status: 400, json: {Error: "Something went wrong!"}
 		end
 	end
 
 	def show
-
+		@list = List.find(params[:id])
+		render json: @list
 	end
 
 	def edit
-
+		@list = List.find(params[:id])
+		render json: @list
 	end
 
 	def update
-
+		@list = List.find(params[:id])
+		@list.update_attributes(list_params)
+		redirect_to list_path
 	end
 
 	def destroy
-
+		@list = List.destroy(params[:id])
 	end
 
 	private
