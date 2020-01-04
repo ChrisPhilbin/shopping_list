@@ -2,13 +2,12 @@ class ListController < ApplicationController
 
 	def new
 		@list = List.new
-
 	end
 
 	def index
 		@lists = List.all
 		if @lists.blank?
-			render status: 400, json: {Error: "Something went wrong!"}
+			render status: 400, json: {error: "Something went wrong!"}
 		else
 			render status: 200, json: @lists
 		end
@@ -19,7 +18,7 @@ class ListController < ApplicationController
 		if @list.save
 			render status: 200, json: @list
 		else
-			render status: 400, json: {Error: "Something went wrong!"}
+			render status: 400, json: {error: "Something went wrong!"}
 		end
 	end
 
