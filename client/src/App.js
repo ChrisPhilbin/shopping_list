@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import { List } from './List'
 
 function App() {
 
@@ -23,11 +23,18 @@ function App() {
     })
   }
 
-  return (
-    <div className="App">
+  render() {
+    return (
+      <div className="App">
+        <form className="form" onSubmit={this.onSubmit}>
+          <input type="text" value={this.state.str} onChange={this.onChange}>
+          <button>Submit</button>
+        </form>
+        <List items={this.state.items} />
+      </div>
+    );
+  }
 
-    </div>
-  );
 }
 
 export default App;
