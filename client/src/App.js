@@ -1,7 +1,7 @@
-import React from 'react';
-import { List } from './List'
+import React, { Component } from 'react';
+import List from './List'
 
-function App() {
+class App extends Component  {
 
   constructor(props) {
     super(props)
@@ -27,7 +27,7 @@ function App() {
     return (
       <div className="App">
         <form className="form" onSubmit={this.onSubmit}>
-          <input type="text" value={this.state.str} onChange={this.onChange}>
+          <input type="text" value={this.state.str} onChange={this.onChange} />
           <button>Submit</button>
         </form>
         <List items={this.state.items} />
